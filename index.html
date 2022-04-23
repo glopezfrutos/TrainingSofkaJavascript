@@ -1,14 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>Page Title</title>
-<meta name="description" content="Roughly 155 characters">
-<!--<link rel="stylesheet" type="text/css" href="mystyle.css">-->
+  <meta charset="UTF-8" />
+  <title>Concurso Preguntas</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin" />
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
-<body>
-<!-- Content -->
-<script src="./scripts/localStorageHandler.js" type="module"></script>
-<script src="./data/questions.js" type="module"></script>
+
+<body onload="openWelcomeModal()">
+  <main>
+    <!-- Modal para inicio del juego -->
+    <div class="modal-container" id="welcome-modal">
+      <div class="modal-content-container">
+        <h1>Bienvenido al juego</h1>
+        <div class="grade-details">
+          <form novalidate>
+            <label for="user">Por favor, introduzca su nombre para comenzar:</label>
+            <input type="text" id="user" class="form-control" placeholder="Nombre de usuario">
+          </form>
+        </div>
+        <div class="modal-button-container">
+          <button onclick="startGame()">Iniciar juego</button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal para inicio del juego -->
+
+    <!-- Modal de podio -->
+    <div class="modal-container" id="podium-modal">
+      <div class="modal-content-container">
+        <h1>Podio</h1>
+        <div class="grade-details">
+          <p id="podium">
+          </p>
+        </div>
+        <div class="modal-button-container">
+          <button onclick="closePodiumModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal de podio -->
+
+    <!-- Modal para cuando termina el juego -->
+    <div class="modal-container" id="score-modal">
+      <div class="modal-content-container">
+        <h1>Juego finalizado</h1>
+
+        <div class="grade-details">
+          <p><span id="remarks"></span></p>
+        </div>
+
+        <div class="modal-button-container">
+          <button onclick="closeScoreModal()">Volver a jugar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal para cuando termina el juego -->
+
+
+    <!-- Marco del juego a ser completado por JS -->
+    <div class="game-quiz-container">
+      <div class="menu-button-container">
+        <button onclick="openWelcomeModal()">Nuevo usuario</button>
+        <button onclick="openPodiumModal()">Ver podio</button>
+      </div>
+      <div class="game-details-container">
+        <h1>Premio: <span id="player-score"></span> u$s.</h1>
+        <h1>Nivel: <span id="question-number"></span> / 5</h1>
+      </div>
+
+      <div class="game-question-container">
+        <h1 id="display-question"></h1>
+      </div>
+
+      <div class="game-options-container">
+        <!-- Modal de ingresar una respuesta -->
+        <div class="modal-container" id="option-modal">
+          <div class="modal-content-container">
+            <h1>Por favor, elegir una respuesta</h1>
+
+            <div class="modal-button-container">
+              <button onclick="closeOptionModal()">Continuar</button>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Modal de ingresar una respuesta -->
+
+        <span>
+          <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+          <label for="option-one" class="option" id="option-one-label"></label>
+        </span>
+
+        <span>
+          <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+          <label for="option-two" class="option" id="option-two-label"></label>
+        </span>
+
+        <span>
+          <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+          <label for="option-three" class="option" id="option-three-label"></label>
+        </span>
+
+        <span>
+          <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+          <label for="option-four" class="option" id="option-four-label"></label>
+        </span>
+      </div>
+
+      <div class="next-button-container">
+        <button id="withdraw" onclick="withdraw()">Retirarse</button>
+        <button id="next" onclick="handleNextQuestion()">Siguiente</button>
+      </div>
+    </div>
+    <!-- Fin Marco del juego a ser completado por JS -->
+
+    <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/localStorageHandler.js" type="module"></script>
+    <script src="./data/questions.js" type="module"></script>
 </body>
+
 </html>
