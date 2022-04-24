@@ -203,6 +203,7 @@ input[type=radio]:checked~.option {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    color:rgb(252, 242, 241);
 }
 
 .grade-details p {
@@ -244,6 +245,26 @@ input[type="text"] {
     box-sizing: border-box;
 }
 /* End Welcome modal */
+
+.podioTitle {
+font-size: 25px;
+color: rgb(210, 185, 185);
+}
+
+#podium-table {
+    width: 200px;
+}
+
+table {
+    border: 1px solid white;
+    font-size: 12px;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid white;
+
+}
 
 @media(min-width : 300px) and (max-width : 350px) {
     .game-quiz-container {

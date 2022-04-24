@@ -3,11 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concurso Preguntas</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin" />
   <link rel="stylesheet" href="./styles/style.css" />
 </head>
-
+(
 <body onload="openWelcomeModal()">
   <main>
     <!-- Modal para inicio del juego -->
@@ -30,10 +32,10 @@
     <!-- Modal de podio -->
     <div class="modal-container" id="podium-modal">
       <div class="modal-content-container">
-        <h1>Podio</h1>
+        <h2 class="podioTitle">Podio</h2>
         <div class="grade-details">
-          <p id="podium">
-          </p>
+          <table id="podium-table">
+          </table>
         </div>
         <div class="modal-button-container">
           <button onclick="closePodiumModal()">Cerrar</button>

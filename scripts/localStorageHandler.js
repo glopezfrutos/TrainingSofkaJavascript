@@ -1,6 +1,5 @@
 import {Questions} from "../data/questions.js";
 
-let Users;
 
 function questionUpload(questions) {
     
@@ -16,34 +15,31 @@ function getUsers() {
 function checkIfExist(userName, users){
 
     let aux = JSON.parse(users)    
-    let position = aux.find( item => {
+    let position = aux.findIndex( item => 
         item.userName === userName
-    })
+    )
     return position
     
 }
 
 function checkScore(userName, users){
     
-    let aux = JSON.parse(users)    
-    let position = aux.find( item => {
-        item.userName === userName
-    })
+    let position = users.findIndex( item => 
+      item.userName === userName
+    )
 
-    return aux[position].userScore;
+    return users[position].userScore;
     
 }
 
-function userUpload(userName) {
+function newUser(userName) {
 
     let users = localStorage.getItem("Users")
-
-    if (checkIfExist(userName, users) == -1) {
+    if (users==null||checkIfExist(userName, users) == -1) {
         let newUser = {
             userName: userName,
             userScore: 0
         };
-    
         if (users != null) {
             let aux = JSON.parse(users)
             let aux2 = [...aux]
@@ -58,13 +54,13 @@ function userUpload(userName) {
     }
 }
 
+function getQuestions() {
+    let questions = localStorage.getItem("Questions")
+    return JSON.parse(questions)
+}
 
-questionUpload(Questions)
-userUpload("Pedro", "pedropedro@gmail.com", 12)
-Users = getUsers()
-console.log(Users);
-setTimeout(1000, userUpload("Marcos", "marquitos@gmail.com", 10)
-)
-
-Users = getUsers()
-console.log(Users);
+function uploadUsers(users) {
+    localStorage.setItem("Users", JSON.stringify(users))
+}
+export {Questions} from "../data/questions.js"
+export {questionUpload, getUsers, checkIfExist, checkScore, newUser, getQuestions, uploadUsers}
